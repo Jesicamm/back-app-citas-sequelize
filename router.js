@@ -1,10 +1,10 @@
 const router = require('express').Router();
-// const countryRouter = require('./routes/country.router')
+const appointmentRouter = require('./routers/appointment.router')
 
 
 // REST RESOURCES
 
-// router.use('/countries', countryRouter)
+router.use('/appointment', appointmentRouter);
 
 
 module.exports = router;
