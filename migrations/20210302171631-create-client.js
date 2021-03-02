@@ -13,18 +13,18 @@ module.exports = {
             },
             email: {
                 type: Sequelize.STRING,
-                primaryKey: true,
+                unique: true
             },
             userName: {
                 type: Sequelize.STRING,
-                primaryKey: true,
+                unique: true
             },
             password: {
                 type: Sequelize.STRING
             },
             phoneNumber: {
                 type: Sequelize.INTEGER,
-                primaryKey: true,
+                unique: true
             },
             birthDate: {
                 type: Sequelize.DATE
