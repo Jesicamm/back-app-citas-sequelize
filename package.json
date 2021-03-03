@@ -1,0 +1,27 @@
+{
+    "name": "back-app-citas-sequelize",
+    "version": "1.0.0",
+    "description": "",
+    "main": "app.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "nodemon app.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Jesicamm/back-app-citas-sequelize.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Jesicamm/back-app-citas-sequelize/issues"
+    },
+    "homepage": "https://github.com/Jesicamm/back-app-citas-sequelize#readme",
+    "dependencies": {
+        "bcryptjs": "^2.4.3",
+        "express": "^4.17.1",
+        "mysql2": "^2.2.5",
+        "nodemon": "^2.0.7",
+        "sequelize": "^6.5.0"
+    }
+}
