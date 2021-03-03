@@ -3,8 +3,6 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     
-    
-
     await queryInterface.bulkInsert('Clinics', [{
       name: 'Clinica Dental JessDieg',
       address: 'Carrer de Almirall Cadarso, 26, 46005 Valencia',

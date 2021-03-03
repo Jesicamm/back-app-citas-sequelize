@@ -15,9 +15,9 @@ router.post('/', async (req, res) => {
         const appointment = await appointmentController.createAppoint(userId,clinicId,appointDate,treatment);
         const status = 'success';
         res.json({status,appointment});
-    } catch( error ){
+    } catch( err ){
         return res.status(404).json({
-            message: err.message
+            message: 'You are trying to create an appointment for a non-existent user'
         });
     }
 });
