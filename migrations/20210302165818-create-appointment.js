@@ -11,9 +11,6 @@ module.exports = {
             appointDate: {
                 type: Sequelize.DATE
             },
-            appointTime: {
-                type: Sequelize.TIME
-            },
             price: {
                 type: Sequelize.INTEGER,
                 defaultValue: 50

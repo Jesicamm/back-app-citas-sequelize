@@ -8,7 +8,11 @@ const appointmentController = require('../controllers/appointment.controller');
 
 router.post('/', async (req, res) => {
     try{
-        const appointment = await appointmentController.createAppoint(req.body.clientId,req.body.clinicId);
+        const userId = req.body.userId;
+        const clinicId = req.body.clinicId;
+        const appointDate = req.body.appointDate;
+        const treatment = req.body.treatment;
+        const appointment = await appointmentController.createAppoint(userId,clinicId,appointDate,treatment);
         const status = 'success';
         res.json({status,appointment});
     } catch( error ){

@@ -1,5 +1,7 @@
 const {Appointment,Client,Clinic} = require('../models')
 
+
+
 class AppointmentController {
 
 
@@ -8,16 +10,8 @@ class AppointmentController {
 
     // CREATE A NEW APPOINTMENT
 
-    async createAppoint(clientId,clinicId) {
-        const userEntity =  await Client.findByPk(clientId)
-        const clinicEntity =  await Clinic.findByPk(clinicId)
-        if(!userEntity || !clinicEntity){
-            throw new Error('User Not Found')
-        }
-        return await Appointment.create({
-            clientId: clientId,
-            clinicId: clinicId
-        });
+    async createAppoint(userId,clinicId,appointDate,treatment) {
+        return await Appointment.create({userId,clinicId,appointDate,treatment});
     }
 
 

@@ -16,14 +16,13 @@ module.exports = (sequelize, DataTypes) => {
             });
             this.belongsTo(models.Client, {
                 as: 'clients',
-                foreignKey: 'clientId'
+                foreignKey: 'userId'
             })
         }
 
     };
     Appointment.init({
         appointDate: DataTypes.DATE,
-        appointTime: DataTypes.TIME,
         price: DataTypes.INTEGER,
         treatment: DataTypes.STRING,
         covid: DataTypes.BOOLEAN
