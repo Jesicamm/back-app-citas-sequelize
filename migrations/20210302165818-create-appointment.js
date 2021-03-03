@@ -16,7 +16,7 @@ module.exports = {
             },
             price: {
                 type: Sequelize.INTEGER,
-                defaultValue: 35
+                defaultValue: 50
             },
             treatment: {
                 type: Sequelize.STRING

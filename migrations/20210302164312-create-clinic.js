@@ -16,11 +16,11 @@ module.exports = {
             },
             email: {
                 type: Sequelize.STRING,
-                primaryKey: true,
+                unique: true
             },
             phoneNumber: {
                 type: Sequelize.INTEGER,
-                primaryKey: true,
+                unique: true
             },
             createdAt: {
                 allowNull: false,
