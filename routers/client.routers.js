@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const clientController = require('../controllers/client.controller');
-/* const jwt = require('jsonwebtoken'); */
+const jwt = require('jsonwebtoken');
 
 // API routes
 
@@ -30,7 +30,17 @@ router.post('/', async(req, res) => {
     }
 })
 
-
+router.post('/login', async(req, res) => {
+    try {
+        const { email, password } = req.body;
+        const jwt = await clientController.login(email, password);
+        res.json({ jwt })
+    } catch (error) {
+        return res.status(401).json({
+            message: error.message
+        });
+    }
+});
 
 
 //GET - Return a User with specified User_name ?query=
@@ -61,17 +71,7 @@ router.post('/', async(req, res) => {
 
 
 
-/* router.post('/login', async(req, res) => {
-    try {
-        const { email, password } = req.body;
-        const jwt = await userController.login(email, password);
-        res.json({ jwt })
-    } catch (error) {
-        return res.status(401).json({
-            message: error.message
-        });
-    }
-}); */
+
 
 //PUT - Update a User Profil already existing
 
