@@ -35,5 +35,18 @@ router.get('/',async (req,res) => {
 })
 
 
+router.get('/user/:id', async (req, res) => {
+    try{
+        const userId = req.params.id
+        res.json(await appointmentController.indexAppointByUsers(userId))
+    }catch(err){
+        res.status(500)
+        .json({
+            message: err.message
+        })
+    }
+})
+
+
 
 module.exports = router;
