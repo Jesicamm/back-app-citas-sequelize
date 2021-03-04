@@ -1,11 +1,12 @@
-/* const bcrypt = require('bcryptjs'); */
 const { Client } = require('../models');
 const jwt = require('jsonwebtoken')
 const secret = process.env.JWT_SECRET || 'unapalabrasecreta';
 const bcrypt = require('bcryptjs');
+
 class User {
 
     //GET - Return all Users in the DB
+
     async findAllClients() {
         return Client.findAll();
     };
@@ -18,32 +19,23 @@ class User {
     };
 
     //POST - SignUpn a new User in the DB & Login
+
     async login(email, password) {
-            const user = await Client.findOne({ email })
-            if (!user) {
-                throw new Error('Email does not exist')
-            }
-            if (!await bcrypt.compare(password, user.password)) {
-                throw new Error('Password incorrect')
-            }
-
-            const payload = {
-                userId: user.id,
-                tokenCreationDate: new Date,
-            }
-
-            return jwt.sign(payload, secret);
+        const user = await Client.findOne({ email })
+        if (!user) {
+            throw new Error('Email does not exist')
         }
-        //GET - Return a User with specified ID
+        if (!await bcrypt.compare(password, user.password)) {
+            throw new Error('Password incorrect')
+        }
 
-    /*  async findById(id) {
-         return Client.findById(id);
-     }; */
+        const payload = {
+            userId: user.id,
+            tokenCreationDate: new Date,
+        }
 
-
-
-
-
+        return jwt.sign(payload, secret);
+    }
 
 };
 
