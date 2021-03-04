@@ -14,12 +14,16 @@ class AppointmentController {
         return await Appointment.create({userId,clinicId,appointDate,treatment});
     }
 
-
-    // READ ALL APPOINTMENTS
+    // FIND APPOINTMENTS
     async indexAll(){
         return Appointment.findAll()
     }
-    // {subQuery: false}
+
+    // FIND APPOINTMENTS
+    async indexAppointByUsers(userId){
+        return Appointment.findAll({where: {userId}})
+    }
+
 }
 
  
