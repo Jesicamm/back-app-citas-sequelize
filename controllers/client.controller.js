@@ -21,21 +21,20 @@ class User {
     //POST - SignUpn a new User in the DB & Login
 
     async login(email, password) {
-        const user = await Client.findOne({ email })
+        const user = await Client.findOne({ where: { email }})
         if (!user) {
             throw new Error('Email does not exist')
         }
         if (!await bcrypt.compare(password, user.password)) {
             throw new Error('Password incorrect')
         }
-
         const payload = {
             userId: user.id,
             tokenCreationDate: new Date,
         }
-
         return jwt.sign(payload, secret);
     }
+
 
 };
 

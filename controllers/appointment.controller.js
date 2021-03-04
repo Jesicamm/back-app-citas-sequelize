@@ -17,12 +17,12 @@ class AppointmentController {
 
     // READ ALL APPOINTMENTS
     async indexAll(){
-        return Appointment.findAll( {subQuery: false})
+        return Appointment.findAll()
     }
-
+    // {subQuery: false}
 }
 
-
+ 
 let appointmentController = new AppointmentController()
 
 module.exports = appointmentController

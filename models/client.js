@@ -7,12 +7,9 @@ module.exports = (sequelize, DataTypes) => {
        
 
         // defining association here
-        static associate(models) {
-            this.hasMany(models.Appointment, {
-                as: 'serviceId',
-            });
+        // static associate(models) {
              
-        }
+        // }
     };
     Client.init({
         fullName: DataTypes.STRING,
