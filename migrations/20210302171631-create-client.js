@@ -27,7 +27,7 @@ module.exports = {
                 unique: true
             },
             birthDate: {
-                type: Sequelize.DATE
+                type: Sequelize.STRING
             },
             address: {
                 type: Sequelize.STRING
