@@ -21,7 +21,7 @@ class AppointmentController {
 
     // FIND APPOINTMENTS
     async indexAppointByUsers(userId){
-        return Appointment.findAll({where: {userId}})
+        return  await Appointment.findAll({where: {userId}})
     }
 
 }

@@ -35,7 +35,7 @@ router.get('/',async (req,res) => {
 })
 
 
-router.get('/id/:id', async (req, res) => {
+router.get('/user/:id', async (req, res) => {
     try{
         const userId = req.params.id
         res.json(await appointmentController.indexAppointByUsers(userId))
