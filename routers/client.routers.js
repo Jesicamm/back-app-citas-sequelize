@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const clientController = require('../controllers/client.controller');
 const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
 
 // API routes
 
