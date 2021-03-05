@@ -26,7 +26,7 @@ class AppointmentController {
         return  await Appointment.findAll({where: {userId, appointDate: {[Op.gte]: dateOfToday}}})
     }
 
-
+        // DELETE APPOINTMENT BY USER ID
     async cancelAppointByUser(userId,appointId){
         const dateOfToday = new Date
         const futureAppoint = await Appointment.findAll({where: {userId, appointDate: {[Op.gte]: dateOfToday}}})

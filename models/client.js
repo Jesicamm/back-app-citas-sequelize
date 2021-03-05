@@ -5,11 +5,6 @@ const {
 module.exports = (sequelize, DataTypes) => {
     class Client extends Model {
        
-
-        // defining association here
-        // static associate(models) {
-             
-        // }
     };
     Client.init({
         fullName: DataTypes.STRING,

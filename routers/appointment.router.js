@@ -2,11 +2,9 @@ const router = require('express').Router();
 const appointmentController = require('../controllers/appointment.controller');
 const auth = require('../middlewares/auth')
 
-
 // APPOINTMENT ENDPOINTS
 
 // POST -CREATE NEW APPOINTMENT
-
 router.post('/', async (req, res) => {
     try{
         const {userId, clinicId, appointDate, treatment} = req.body
@@ -20,10 +18,7 @@ router.post('/', async (req, res) => {
     }
 });
 
-
-
 // GET ALL APPOINTMENTS
-
 router.get('/',async (req,res) => {
     try{
         res.json(await appointmentController.indexAll())
@@ -35,7 +30,7 @@ router.get('/',async (req,res) => {
     }
 })
 
-
+// GET FUTURE APPOINTMENTS BY USER ID USING AUTH TOKEN
 router.get('/user/:id',auth, async (req, res) => {
     try{
         const userId = req.params.id
@@ -48,6 +43,8 @@ router.get('/user/:id',auth, async (req, res) => {
     }
 })
 
+
+ // DELETE APPOINTMENT BY USER ID USING AUTH TOKEN
 router.delete('/user/:id',auth, async (req, res) => {
     try{
         const userId = req.params.id
