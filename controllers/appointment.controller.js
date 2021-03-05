@@ -1,4 +1,5 @@
 const {Appointment,Client,Clinic} = require('../models')
+const {Op} = require('sequelize')
 
 
 
@@ -21,7 +22,8 @@ class AppointmentController {
 
     // FIND APPOINTMENTS
     async indexAppointByUsers(userId){
-        return  await Appointment.findAll({where: {userId}})
+        const dateOfToday = new Date
+        return  await Appointment.findAll({where: {userId, appointDate: {[Op.gte]: dateOfToday}}})
     }
 
 }

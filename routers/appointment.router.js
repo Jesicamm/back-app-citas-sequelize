@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const appointmentController = require('../controllers/appointment.controller');
+const auth = require('../middlewares/auth')
 
 
 // APPOINTMENT ENDPOINTS
@@ -35,7 +36,7 @@ router.get('/',async (req,res) => {
 })
 
 
-router.get('/user/:id', async (req, res) => {
+router.get('/user/:id',auth, async (req, res) => {
     try{
         const userId = req.params.id
         res.json(await appointmentController.indexAppointByUsers(userId))
