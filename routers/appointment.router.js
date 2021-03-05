@@ -39,7 +39,7 @@ router.get('/',async (req,res) => {
 router.get('/user/:id',auth, async (req, res) => {
     try{
         const userId = req.params.id
-        res.json(await appointmentController.indexAppointByUsers(userId))
+        res.json(await appointmentController.indexAppointByUser(userId))
     }catch(err){
         res.status(500)
         .json({
@@ -48,6 +48,20 @@ router.get('/user/:id',auth, async (req, res) => {
     }
 })
 
+router.delete('/user/:id',auth, async (req, res) => {
+    try{
+        const userId = req.params.id
+        const appointId = req.query.key
+        const status = `Appointment ${appointId} from ${userId} has been deleted`
+        const deleted = await appointmentController.cancelAppointByUser(userId,appointId)
+        res.json({status,deleted})
+    }catch(err){
+        res.status(500)
+        .json({
+            message: err.message
+        })
+    }
+})
 
 
 module.exports = router;

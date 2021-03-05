@@ -21,9 +21,20 @@ class AppointmentController {
     }
 
     // FIND APPOINTMENTS
-    async indexAppointByUsers(userId){
+    async indexAppointByUser(userId){
         const dateOfToday = new Date
         return  await Appointment.findAll({where: {userId, appointDate: {[Op.gte]: dateOfToday}}})
+    }
+
+
+    async cancelAppointByUser(userId,appointId){
+        const dateOfToday = new Date
+        const futureAppoint = await Appointment.findAll({where: {userId, appointDate: {[Op.gte]: dateOfToday}}})
+        if(!futureAppoint){
+            throw new Error ('Not authorized to delete old appointments')
+        }else{
+            return await Appointment.destroy({where: {id: appointId}})
+        }
     }
 
 }
