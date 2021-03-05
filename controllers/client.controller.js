@@ -17,6 +17,12 @@ class User {
         return Client.findByPk(id);
     };
 
+     //GET - LogOut for an user by and specified Id
+
+     async getProfile(id) {
+        return Client.findByPk(id);
+    };
+
 
     //POST - Sign Up in the Db
 

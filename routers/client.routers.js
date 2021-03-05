@@ -18,7 +18,7 @@ router.get('/', async(req, res) => {
 
 //GET - LogOut for an user by and specified Id
 
-router.get('/logOut/:id',async (req, res) => {
+router.get('/logout/:id',async (req, res) => {
     try {
         const id = req.params.id;
         const user =  await clientController.logOut(id);
@@ -35,6 +35,32 @@ router.get('/logOut/:id',async (req, res) => {
         });
     }
 });
+
+//GET - User profile By Id
+
+router.get('/:id',async (req, res) => {
+    try {
+
+        const id = req.params.id;
+        const user =  await clientController.getProfile(id);
+        const name = user.fullName;
+        const email = user.email;
+        const userName = user.userName;
+        const password = user.password;
+        const phoneNumber = user.phoneNumber;
+        const birthDate = user.birthDate;
+        const adress = user.adress;
+        const payMethod = user.payMethod;
+        
+        res.json({name, email,userName,password,phoneNumber,birthDate,adress,payMethod}); 
+        
+    }catch (err) {
+        return res.status(500).json({
+            message: err.message
+        });
+    }
+});
+
 
 //POST - SignIn a new User in the DB
 
