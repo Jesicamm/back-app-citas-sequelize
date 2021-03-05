@@ -16,14 +16,20 @@ router.get('/', async(req, res) => {
     }
 });
 
-// GET - LogOut
+//GET - LogOut for an user by and specified Id
 
-router.get('/logOut', async(req, res) => {
+router.get('/logOut/:id',async (req, res) => {
     try {
-        /*  const client = await clientController.logOut() */
-        const status = 'Welcome back Soon';
-        res.json({ status });
-    } catch (err) {
+        const id = req.params.id;
+        const user =  await clientController.logOut(id);
+        const status = 'Hope to see you Soon';
+        const notStatus = 'usuario no encontrado'
+        if (!user){
+            res.json({notStatus})
+        }else{
+        res.json({ status, id }); 
+        }
+    }catch (err) {
         return res.status(500).json({
             message: err.message
         });
