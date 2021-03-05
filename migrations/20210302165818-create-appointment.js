@@ -1,5 +1,8 @@
 'use strict';
 module.exports = {
+
+    // Creating the table for the appointments
+    
     up: async(queryInterface, Sequelize) => {
         await queryInterface.createTable('Appointments', {
             id: {

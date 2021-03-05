@@ -1,4 +1,5 @@
 const {Appointment,Client,Clinic} = require('../models')
+const {Op} = require('sequelize')
 
 
 
@@ -20,8 +21,20 @@ class AppointmentController {
     }
 
     // FIND APPOINTMENTS
-    async indexAppointByUsers(userId){
-        return  await Appointment.findAll({where: {userId}})
+    async indexAppointByUser(userId){
+        const dateOfToday = new Date
+        return  await Appointment.findAll({where: {userId, appointDate: {[Op.gte]: dateOfToday}}})
+    }
+
+        // DELETE APPOINTMENT BY USER ID
+    async cancelAppointByUser(userId,appointId){
+        const dateOfToday = new Date
+        const futureAppoint = await Appointment.findAll({where: {userId, appointDate: {[Op.gte]: dateOfToday}}})
+        if(!futureAppoint){
+            throw new Error ('Not authorized to delete old appointments')
+        }else{
+            return await Appointment.destroy({where: {id: appointId}})
+        }
     }
 
 }

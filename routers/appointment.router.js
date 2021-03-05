@@ -1,11 +1,10 @@
 const router = require('express').Router();
 const appointmentController = require('../controllers/appointment.controller');
-
+const auth = require('../middlewares/auth')
 
 // APPOINTMENT ENDPOINTS
 
 // POST -CREATE NEW APPOINTMENT
-
 router.post('/', async (req, res) => {
     try{
         const {userId, clinicId, appointDate, treatment} = req.body
@@ -19,10 +18,7 @@ router.post('/', async (req, res) => {
     }
 });
 
-
-
 // GET ALL APPOINTMENTS
-
 router.get('/',async (req,res) => {
     try{
         res.json(await appointmentController.indexAll())
@@ -34,11 +30,11 @@ router.get('/',async (req,res) => {
     }
 })
 
-
-router.get('/user/:id', async (req, res) => {
+// GET FUTURE APPOINTMENTS BY USER ID USING AUTH TOKEN
+router.get('/user/:id',auth, async (req, res) => {
     try{
         const userId = req.params.id
-        res.json(await appointmentController.indexAppointByUsers(userId))
+        res.json(await appointmentController.indexAppointByUser(userId))
     }catch(err){
         res.status(500)
         .json({
@@ -47,6 +43,22 @@ router.get('/user/:id', async (req, res) => {
     }
 })
 
+
+ // DELETE APPOINTMENT BY USER ID USING AUTH TOKEN
+router.delete('/user/:id',auth, async (req, res) => {
+    try{
+        const userId = req.params.id
+        const appointId = req.query.key
+        const status = `Appointment ${appointId} from ${userId} has been deleted`
+        const deleted = await appointmentController.cancelAppointByUser(userId,appointId)
+        res.json({status,deleted})
+    }catch(err){
+        res.status(500)
+        .json({
+            message: err.message
+        })
+    }
+})
 
 
 module.exports = router;
