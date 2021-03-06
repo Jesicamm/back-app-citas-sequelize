@@ -2,6 +2,7 @@ const router = require('express').Router();
 const clientController = require('../controllers/client.controller');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
+const auth = require('../middlewares/auth')
 
 // API routes
 
@@ -19,11 +20,11 @@ router.get('/', async(req, res) => {
 
 //GET - LogOut for an user by and specified Id
 
-router.get('/logout/:id',async (req, res) => {
+router.get('/logout/:id', auth, async (req, res) => {
     try {
         const id = req.params.id;
         const user =  await clientController.logOut(id);
-        const status = 'Hope to see you Soon';
+        const status = `Hope to see you soon, ${user.fullName}`;
         const notStatus = 'usuario no encontrado'
         if (!user){
             res.json({notStatus})
@@ -39,7 +40,7 @@ router.get('/logout/:id',async (req, res) => {
 
 //GET - User profile By Id
 
-router.get('/:id',async (req, res) => {
+router.get('/:id', auth, async (req, res) => {
     try {
 
         const id = req.params.id;
