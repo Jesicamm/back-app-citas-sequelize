@@ -1,4 +1,5 @@
 'use strict';
+
 const {
     Model
 } = require('sequelize');
@@ -30,3 +31,4 @@ module.exports = (sequelize, DataTypes) => {
 //   delete values.password;
 //   return values;
 // }
+
