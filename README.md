@@ -3,12 +3,13 @@
 
 
 
-
+## DB Diagram
 <img src="img/clinicDiagram.png"
      style="margin: 1rem;" />
 
 
 
+## Technologies
 
 | Tech | Description |
 | ---- | ---- |

@@ -1,8 +1,6 @@
 const jwt = require('jsonwebtoken');
 const secret = process.env.JWT_SECRET || 'unapalabrasecreta';
 
-
-
 /* This function is to verify the token of the user
 when rendering the future appointments or deleten them */
 
@@ -25,7 +23,6 @@ const auth =  async (req, res, next) => {
             message: err.message
         })
     }
-    
 }
 
 module.exports = auth;
