@@ -1,6 +1,8 @@
 const router = require('express').Router();
 const clientController = require('../controllers/client.controller');
 const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
+const auth = require('../middlewares/auth')
 
 // API routes
 
@@ -16,19 +18,51 @@ router.get('/', async(req, res) => {
     }
 });
 
-// GET - LogOut
+//GET - LogOut for an user by and specified Id
 
-router.get('/logOut', async(req, res) => {
+router.get('/logout/:id', auth, async (req, res) => {
     try {
-        /*  const client = await clientController.logOut() */
-        const status = 'Welcome back Soon';
-        res.json({ status });
-    } catch (err) {
+        const id = req.params.id;
+        const user =  await clientController.logOut(id);
+        const status = `Hope to see you soon, ${user.fullName}`;
+        const notStatus = 'usuario no encontrado'
+        if (!user){
+            res.json({notStatus})
+        }else{
+        res.json({ status, id }); 
+        }
+    }catch (err) {
         return res.status(500).json({
             message: err.message
         });
     }
 });
+
+//GET - User profile By Id
+
+router.get('/:id', auth, async (req, res) => {
+    try {
+
+        const id = req.params.id;
+        const user =  await clientController.getProfile(id);
+        const name = user.fullName;
+        const email = user.email;
+        const userName = user.userName;
+        const password = user.password;
+        const phoneNumber = user.phoneNumber;
+        const birthDate = user.birthDate;
+        const adress = user.adress;
+        const payMethod = user.payMethod;
+        
+        res.json({name, email,userName,password,phoneNumber,birthDate,adress,payMethod}); 
+        
+    }catch (err) {
+        return res.status(500).json({
+            message: err.message
+        });
+    }
+});
+
 
 //POST - SignIn a new User in the DB
 

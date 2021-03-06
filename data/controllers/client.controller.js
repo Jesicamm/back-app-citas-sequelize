@@ -11,14 +11,27 @@ class User {
         return Client.findAll();
     };
 
-    //POST - Registro de usuarios
+    //GET - LogOut for an user by and specified Id
+
+    async logOut(id) {
+        return Client.findByPk(id);
+    };
+
+     //GET - LogOut for an user by and specified Id
+
+     async getProfile(id) {
+        return Client.findByPk(id);
+    };
+
+
+    //POST - Sign Up in the Db
 
     async signUpUser(user) {
         user.password = await bcrypt.hash(user.password, 10)
         return Client.create(user)
     };
 
-    //POST - SignUpn a new User in the DB & Login
+    //POST - Login 
 
     async login(email, password) {
         const user = await Client.findOne({ where: { email }})
