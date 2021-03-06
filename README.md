@@ -2,9 +2,15 @@
 ### Backend with Sequelize & MySQL
 
 
+### Table of Contents
+1. [DB Diagram](#DB-Diagram)
+2. [Technologies](#Technologies)
+3. [Enviroment Vars](#Enviroment-Vars)
+4. [Installation](#Installation)
+5. [Authors](#Authors)
 
-## DB Diagram
-<img src="img/clinicDiagram.png"
+## DB-Diagram
+<img src="data/img/clinicDiagram.png"
      style="margin: 1rem;" />
 
 
@@ -22,7 +28,7 @@
 | bcryptjs | Optimized bcrypt in JavaScript with zero dependencies|
 | Docker Compose | Compose is a tool for defining and running multi-container Docker applications.|
 
-## Enviroment Vars
+## Enviroment-Vars
 
     * MYSQL_DATABASE
     * MYSQL_USER
@@ -62,9 +68,16 @@ npm run start
 ```
 ##### Now you are up and running.
 
-Click the below button in order to open Postman
+Click the below button in order to open Postman and press in the following link in order to open the [Postman Collection](https://documenter.getpostman.com/view/14551432/Tz5jfLYs) where you will find the different API routes of the app.
 
 
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/20f1441c147d9fec8c3b)
+
+## Authors
+
+    * Jesica Morocho Miguel
+    * Diego Garcia Brisa
+
+Special thanks to all the colleagues from @GeeksHubs Academy that gave us a hand.
 
 
