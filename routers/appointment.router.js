@@ -49,7 +49,7 @@ router.delete('/user/:id',auth, async (req, res) => {
     try{
         const userId = req.params.id
         const appointId = req.query.key
-        const status = `Appointment ${appointId} from ${userId} has been deleted`
+        const status = `Appointment ${appointId} from Client id ${userId} has been deleted`
         const deleted = await appointmentController.cancelAppointByUser(userId,appointId)
         res.json({status,deleted})
     }catch(err){
