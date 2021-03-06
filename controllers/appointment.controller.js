@@ -39,7 +39,7 @@ class AppointmentController {
 
 }
 
- 
+  
 let appointmentController = new AppointmentController()
 
 module.exports = appointmentController
