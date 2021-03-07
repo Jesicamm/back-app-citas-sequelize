@@ -52,7 +52,11 @@ docker-compose up -d
 ```
 Remember to access the [localhost:8080](http://localhost:8080/) in your favourite browser
 
-In order to build the data base in phpMyAdmin run the following commands:
+In order to build the data base in phpMyAdmin, access the source/ directory and run the following commands:
+
+```sh
+cd source/
+```
 ```sh
 sequelize db:create
 ```

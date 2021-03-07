@@ -48,13 +48,12 @@ router.get('/:id', auth, async (req, res) => {
         const name = user.fullName;
         const email = user.email;
         const userName = user.userName;
-        const password = user.password;
         const phoneNumber = user.phoneNumber;
         const birthDate = user.birthDate;
         const adress = user.adress;
         const payMethod = user.payMethod;
         
-        res.json({name, email,userName,password,phoneNumber,birthDate,adress,payMethod}); 
+        res.json({name,email,userName,phoneNumber,birthDate,adress,payMethod}); 
         
     }catch (err) {
         return res.status(500).json({
@@ -71,7 +70,7 @@ router.post('/', async(req, res) => {
         const id = await clientController.signUpUser(req.body);
         const status = 'success';
         res.json({ status, id });
-    } catch (error) {
+    } catch (err) {
         return res.status(500).json({
             message: err.message
         });
