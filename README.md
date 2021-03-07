@@ -10,7 +10,7 @@
 5. [Authors](#Authors)
 
 ## DB-Diagram
-<img src="./data/img/clinicDiagram.png"
+<img src="source/img/clinicDiagram.png"
      style="margin: 1rem;" />
 
 
