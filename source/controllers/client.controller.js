@@ -23,7 +23,6 @@ class User {
         return Client.findByPk(id);
     };
 
-
     //POST - Sign Up in the Db
 
     async signUpUser(user) {

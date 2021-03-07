@@ -23,12 +23,5 @@ module.exports = (sequelize, DataTypes) => {
     return Client;
 };
 
-// const Client = sequelize.define('Client', attributes, {});
 
-// Client.prototype.toJSON =  function () {
-//   const values = Object.assign({}, this.get());
-
-//   delete values.password;
-//   return values;
-// }
 
