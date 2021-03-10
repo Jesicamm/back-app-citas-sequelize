@@ -71,7 +71,7 @@ router.post('/', async(req, res) => {
         const status = 'success';
         res.json({ status, id });
     } catch (err) {
-        return res.status(500).json({
+        return res.status(409).json({
             message: err.message
         });
     }

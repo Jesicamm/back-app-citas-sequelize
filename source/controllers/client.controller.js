@@ -26,6 +26,13 @@ class User {
     //POST - Sign Up in the Db
 
     async signUpUser(user) {
+        let email = user.email
+        let userName = user.userName
+        let phoneNumber = user.phoneNumber
+        const userFound = await Client.findOne({ where: {email} || {userName} || {phoneNumber}})
+        if(userFound){
+            throw new Error('Email already registered')
+        }
         user.password = await bcrypt.hash(user.password, 10)
         return Client.create(user)
     };
