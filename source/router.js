@@ -4,6 +4,6 @@ const clientRouter = require('./routers/client.routers')
 
 // REST RESOURCES
 router.use('/appointment', appointmentRouter);
-router.use('/users', clientRouter);
+router.use('/user', clientRouter);
 
 module.exports = router;

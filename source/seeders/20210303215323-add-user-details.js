@@ -14,7 +14,6 @@ module.exports = {
         phoneNumber: 60000002,
         birthDate: "1990/01/01",
         address: 'Carrer falsa 1',
-        payMethod: 'Mastercard',
         createdAt: new Date,
         updatedAt: new Date,
       },
@@ -28,7 +27,6 @@ module.exports = {
         phoneNumber: 60000003,
         birthDate: "1987/05/01",
         address: 'Carrer falsa 1',
-        payMethod: 'Mastercard',
         createdAt: new Date,
         updatedAt: new Date,
       }

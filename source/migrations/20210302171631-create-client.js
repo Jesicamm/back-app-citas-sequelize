@@ -35,9 +35,6 @@ module.exports = {
             address: {
                 type: Sequelize.STRING
             },
-            payMethod: {
-                type: Sequelize.STRING
-            },
             createdAt: {
                 allowNull: false,
                 type: Sequelize.DATE

@@ -18,6 +18,9 @@ module.exports = {
                 type: Sequelize.INTEGER,
                 defaultValue: 50
             },
+            payMethod: {
+                type: Sequelize.STRING
+            },
             treatment: {
                 type: Sequelize.STRING
             },
