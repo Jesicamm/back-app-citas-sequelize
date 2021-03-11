@@ -51,7 +51,8 @@ class User {
             userId: user.id,
             tokenCreationDate: new Date,
         }
-        return jwt.sign(payload, secret);
+        let token = jwt.sign(payload, secret);
+        return {user, token}
     }
 
 

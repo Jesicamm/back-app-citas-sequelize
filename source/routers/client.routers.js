@@ -83,9 +83,11 @@ router.post('/login', async(req, res) => {
     try {
         const { email, password } = req.body;
         const jwt = await clientController.login(email, password);
-        res.json({ jwt })
+        const token = jwt.token
+        const user = jwt.user
+        res.json({ token, user })
     } catch (error) {
-        return res.status(401).json({
+        return res.status(409).json({
             message: error.message
         });
     }
