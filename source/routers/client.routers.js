@@ -1,8 +1,8 @@
 const router = require('express').Router();
 const clientController = require('../controllers/client.controller');
 const jwt = require('jsonwebtoken');
-const bcrypt = require('bcryptjs');
 const auth = require('../middlewares/auth')
+// const authAdmin = require('../middlewares/authAdmin')
 
 // API routes
 
@@ -50,10 +50,10 @@ router.get('/:id', auth, async (req, res) => {
         const userName = user.userName;
         const phoneNumber = user.phoneNumber;
         const birthDate = user.birthDate;
-        const adress = user.adress;
+        const address = user.address;
         const payMethod = user.payMethod;
         
-        res.json({name,email,userName,phoneNumber,birthDate,adress,payMethod}); 
+        res.json({name,email,userName,phoneNumber,birthDate,address,payMethod}); 
         
     }catch (err) {
         return res.status(500).json({
@@ -67,9 +67,9 @@ router.get('/:id', auth, async (req, res) => {
 
 router.post('/', async(req, res) => {
     try {
-        const id = await clientController.signUpUser(req.body);
+        const user = await clientController.signUpUser(req.body);
         const status = 'success';
-        res.json({ status, id });
+        res.json({ status, user });
     } catch (err) {
         return res.status(409).json({
             message: err.message
@@ -92,5 +92,18 @@ router.post('/login', async(req, res) => {
         });
     }
 });
+
+
+router.put('/:id', auth, async(req, res) => {
+    try{
+        const id = req.params.id;
+        const user = await clientController.updateUser(id, req.body)
+        res.json(user)
+    }catch (error){
+        return res.status(500).json({
+            message: error.message
+        });
+    }
+})
 
 module.exports = router;

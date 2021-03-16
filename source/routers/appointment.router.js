@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const appointmentController = require('../controllers/appointment.controller');
-const auth = require('../middlewares/auth')
+const auth = require('../middlewares/auth');
+// const authAdmin = require('../middlewares/authAdmin')
 
 // APPOINTMENT ENDPOINTS
 
@@ -51,6 +52,21 @@ router.delete('/user/:id',auth, async (req, res) => {
         const appointId = req.query.key
         const deleted = await appointmentController.cancelAppointByUser(userId,appointId)
         const status = `Appointment ${appointId} from Client id ${userId} has been deleted`
+        res.json({status,deleted})
+    }catch(err){
+        res.status(500)
+        .json({
+            message: err.message
+        })
+    }
+})
+
+ // DELETE ANY APPOINTMENT  USING AUTHADMIN TOKEN
+ router.delete('/:id', async (req, res) => {
+    try{
+        const appointId = req.params.id
+        const deleted = await appointmentController.cancelAppoint(appointId)
+        const status = `Appointment ${appointId} has been deleted`
         res.json({status,deleted})
     }catch(err){
         res.status(500)

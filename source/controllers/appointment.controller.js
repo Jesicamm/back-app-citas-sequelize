@@ -37,6 +37,11 @@ class AppointmentController {
         }
     }
 
+         // DELETE APPOINTMENT BY USER ID
+        async cancelAppoint(appointId){
+                return await Appointment.destroy({where: {id: appointId}})
+        }
+
 }
 
   

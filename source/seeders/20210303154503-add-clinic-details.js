@@ -9,7 +9,10 @@ module.exports = {
       name: 'Clinica Dental JessDieg',
       address: 'Carrer de Almirall Cadarso, 26, 46005 Valencia',
       phoneNumber: 60000001,
-      email: "email@email",
+      email: "admin@admin.es",
+      password: "Admin01",
+      birthDate: "15/03/2021",
+      role: 'Founder',
       createdAt: new Date,
       updatedAt: new Date,
     }], {});
