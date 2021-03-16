@@ -55,6 +55,12 @@ class User {
         return {user, token}
     }
 
+    // PUT - Update a User
+
+    async updateUser(id, update) {
+        const user = await Client.findOne({where: {id}})
+        return await user.update(update);
+    }
 
 };
 
