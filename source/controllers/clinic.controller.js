@@ -38,20 +38,21 @@ class Admin {
 
     //POST - Login 
 
-    async login(email, password) {
+    async login(email) {
         const admin = await Clinic.findOne({ where: { email }})
         if (!admin) {
             throw new Error('Email does not exist')
         }
-        if (!await bcrypt.compare(password, admin.password)) {
-            throw new Error('Password incorrect')
-        }
-        const payload = {
-            adminId: admin.id,
-            tokenCreationDate: new Date,
-        }
-        let token = jwt.sign(payload, secret);
-        return {admin, token}
+        // if (!await bcrypt.compare(password, admin.password)) {
+        //     throw new Error('Password incorrect')
+        // }
+        // const payload = {
+        //     adminId: admin.id,
+        //     tokenCreationDate: new Date,
+        // }
+        // let token = jwt.sign(payload, secret);
+        // {admin, token}
+        return await Clinic.findOne({ where: { email} })
     }
 
     

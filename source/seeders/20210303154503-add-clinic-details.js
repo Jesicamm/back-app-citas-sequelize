@@ -11,7 +11,7 @@ module.exports = {
       phoneNumber: 60000001,
       email: "admin@admin.es",
       password: "Admin01",
-      birthDate: "15/03/2021",
+      birthDate: "1987/05/01",
       role: 'Founder',
       createdAt: new Date,
       updatedAt: new Date,
