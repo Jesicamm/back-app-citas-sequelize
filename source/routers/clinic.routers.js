@@ -81,11 +81,8 @@ router.post('/', async(req, res) => {
 router.post('/login', async(req, res) => {
     try {
         const { email, password } = req.body;
-        // const jwt = await clinicController.login(email, password);
-        // const token = jwt.token
-        // const admin = jwt.admin
-
-        res.json(await clinicController.login(email))
+        const admin = await clinicController.login(email,password)
+        res.json(admin)
     } catch (error) {
         return res.status(409).json({
             message: error.message
