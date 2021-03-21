@@ -8,8 +8,8 @@ const auth = require('../middlewares/auth');
 // POST -CREATE NEW APPOINTMENT
 router.post('/', async (req, res) => {
     try{
-        const {userId, clinicId, appointDate, treatment} = req.body
-        const appointment = await appointmentController.createAppoint(userId,clinicId,appointDate,treatment);
+        const {userId, clinicId, appointDate, treatment,covid,payMethod} = req.body
+        const appointment = await appointmentController.createAppoint(userId,clinicId,appointDate,treatment, covid,payMethod);
         res.json({appointment});
     } catch( err ){
         return res.status(404).json({

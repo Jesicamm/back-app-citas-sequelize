@@ -11,8 +11,8 @@ class AppointmentController {
 
     // CREATE A NEW APPOINTMENT
 
-    async createAppoint(userId,clinicId,appointDate,treatment) {
-        return await Appointment.create({userId,clinicId,appointDate,treatment});
+    async createAppoint(userId,clinicId,appointDate,treatment,covid,payMethod) {
+        return await Appointment.create({userId,clinicId,appointDate,treatment,covid,payMethod});
     }
 
     // FIND APPOINTMENTS
